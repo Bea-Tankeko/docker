@@ -4,3 +4,9 @@
   become: yes
   roles:
     - nagios
+
+- name: Install Kibana
+  hosts: workstations
+  become: yes
+  roles:
+    - kibana

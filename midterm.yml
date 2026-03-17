@@ -1,12 +1,24 @@
 --- 
 - name: Install Nagios (CentOS)
-  hosts: web_servers 
+  hosts: web_servers
   become: yes
   roles:
     - nagios
 
-- name: Install ElasticSearch
-  hosts: workstations 
+- name: Install Kibana
+  hosts: workstations
   become: yes
   roles:
-    - Elastic
+    - kibana
+
+- name: Install logstash
+  hosts: workstations
+  become: yes
+  roles:
+    - logstash
+
+- name: Install Lampstack
+  hosts: workstations
+  become: yes
+  roles:
+    -lampstack

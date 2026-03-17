@@ -22,3 +22,20 @@
         state: present
         filename: "elastic-8.x.list"
 
+- name: Update Elasticsearch Configuration file
+  lineinfile:
+    path: /etc/elasticsearch/midterm.yml
+    regexp: " {{ item.regexp }}"
+    line: " {{ item.line }}"
+
+    loop:
+      - { regexp: '^network\.host, line: network.host: {{ server}}' }
+      - { regxp: '^ http\.port: ', line t: {{ elasticseach.http_port }} ''}
+
+- name: Enable and Start Elasticsearch service 
+  service:
+    name: elasticsearch
+    state: started
+    enabled: yes
+
+    

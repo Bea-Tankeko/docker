@@ -1,2 +1,8 @@
 ---
-# tasks file for lampstack
+
+- name: Install Lampstack dependencies
+  state: present 
+  update_cache: yes
+  with_items:
+    - mariadb-server
+
